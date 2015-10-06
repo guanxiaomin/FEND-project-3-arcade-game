@@ -1,5 +1,4 @@
 # Front-End Nanodegree Arcade Game
-=====================================================
 
 update on Oct-06-2015
 ## Overview
