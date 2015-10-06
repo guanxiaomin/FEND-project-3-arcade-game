@@ -30,11 +30,10 @@ Enemy.prototype.update = function(dt) {
     var enemyTop = this.y - 50;
     var enemyBottom = this.y + 50;
     if (player.x > this.x - 50 && player.x < this.x + 50 && player.y > this.y - 50 && player.y < this.y + 50) {
+        alert("GAME OVER!");
         player.resetPos();
     }
 };
-
-
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -53,14 +52,15 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
-
+    if (this.y < 10) {
+        alert("!!YOU WIN!!");
+        player.resetPos();
+    }
 };
 
 Player.prototype.resetPos = function() {
     this.x = playerInitPos[0];
     this.y = playerInitPos[1];
-
-    alert("Game Over");
     document.location.reload();
 }
 
@@ -72,13 +72,13 @@ Player.prototype.handleInput = function(ctrlKey) {
     if (ctrlKey === "left" && this.x > 0) {
         this.x -= 101;
     }
-    else if (ctrlKey === "right" && this.x < 505) {
+    else if (ctrlKey === "right" && this.x < 400) {
         this.x += 101;
     }
     else if (ctrlKey === "up" && this.y > 0) {
         this.y -= 83;
     }
-    else if (ctrlKey === "down" && this.y < 606) {
+    else if (ctrlKey === "down" && this.y < 400) {
         this.y += 83;
     }
     else {
@@ -95,7 +95,7 @@ for (var i = 0; i < 3; i++) {
 }
 var player = new Player();
 
-
+// console.log(canvas.width, canvas.height);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
