@@ -29,9 +29,9 @@ Enemy.prototype.update = function(dt) {
     var enemyRight = this.x + 50;
     var enemyTop = this.y - 50;
     var enemyBottom = this.y + 50;
-    if (player.x > this.x - 50 && player.x < this.x + 50 && player.y > this.y - 50 && player.y < this.y + 50) {
+    if (player.x > enemyLeft && player.x < enemyRight && player.y > enemyTop && player.y < enemyBottom) {
         alert("GAME OVER!");
-        player.resetPos();
+        this.resetPos();
     }
 };
 
@@ -43,18 +43,18 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var playerInitPos = [200, 400];
+var PLAYER_INIT_POS = [200, 400];
 
 var Player = function() {
     this.sprite = 'images/char-boy.png';
-    this.x = playerInitPos[0];
-    this.y = playerInitPos[1];
+    this.x = PLAYER_INIT_POS[0];
+    this.y = PLAYER_INIT_POS[1];
 };
 
 Player.prototype.update = function() {
     if (this.y < 10) {
         alert("!!YOU WIN!!");
-        player.resetPos();
+        this.resetPos();
     }
 };
 
@@ -62,7 +62,7 @@ Player.prototype.resetPos = function() {
     this.x = playerInitPos[0];
     this.y = playerInitPos[1];
     document.location.reload();
-}
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
