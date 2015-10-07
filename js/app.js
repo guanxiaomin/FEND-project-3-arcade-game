@@ -59,8 +59,8 @@ Player.prototype.update = function() {
 };
 
 Player.prototype.resetPos = function() {
-    this.x = playerInitPos[0];
-    this.y = playerInitPos[1];
+    this.x = PLAYER_INIT_POS[0];
+    this.y = PLAYER_INIT_POS[1];
     document.location.reload();
 };
 
