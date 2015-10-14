@@ -31,7 +31,7 @@ Enemy.prototype.update = function(dt) {
     var enemyBottom = this.y + 50;
     if (player.x > enemyLeft && player.x < enemyRight && player.y > enemyTop && player.y < enemyBottom) {
         alert("GAME OVER!");
-        this.resetPos();
+        player.resetPos();
     }
 };
 
